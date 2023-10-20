@@ -23,7 +23,7 @@ public class Bilderwechsler {
 	
 	private String bilderOrdnerPfad = "H:/Jonas/Unterricht/Systembetreuung/Java_Infotafel/";
 	
-	private Path bilderNamenPfad = Paths.get("H:/Jonas/Unterricht/Systembetreuung/Java_Infotafel/JavaFuerInfotafel/Bildernamen.txt");
+	private Path bilderNamenPfad = Paths.get("C:/users/jonas/git/repository/JavaFuerInfotafel/Bildernamen.txt");
 	
 	public Bilderwechsler(String speicherOrtInfoDatei) {
 		dateiname = speicherOrtInfoDatei;
