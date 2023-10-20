@@ -151,7 +151,7 @@ public class View {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		BildHinzufügenPanel.setLayout(gl_BildHinzufügenPanel);
-		
+		//blabla
 		
 		
 		JButton LöschenButton4 = new JButton("Löschen");
