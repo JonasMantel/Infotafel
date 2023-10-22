@@ -32,6 +32,10 @@ public class View {
 	private JButton LöschenButton3 = new JButton("Löschen");
 	
 	private JLabel Bild4Label = new JLabel("Bild4");
+	
+	private Thread meinThread;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -56,6 +60,7 @@ public class View {
 	public View() {
 		
 		meinBilderwechsler = new Bilderwechsler("H:/Jonas/Unterricht/Systembetreuung/Java_Infotafel/info.html");
+		
 		meinBilderwechsler.BildernamenEinlesen();
 		initialize();
 		int zahlBilder = meinBilderwechsler.getMeineBilderSize();
@@ -224,8 +229,12 @@ public class View {
 		JButton StartButton = new JButton("Start");
 		StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				meinBilderwechsler.setWechseln(true);
-				meinBilderwechsler.BilderWechseln();
+				//Starten eines Threads:
+				meinThread = new BWThread(meinBilderwechsler);
+				meinThread.start();
+				//Alternative ohne Thread:
+				//meinBilderwechsler.setWechseln(true);
+				//meinBilderwechsler.BilderWechseln();
 			}
 		});
 		
@@ -233,6 +242,8 @@ public class View {
 		StopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				meinBilderwechsler.setWechseln(false);
+				//Alternative ohne Thread:
+				//meinBilderwechsler.setWechseln(false);
 			}
 		});
 		GroupLayout StartStopPanel = new GroupLayout(panel);

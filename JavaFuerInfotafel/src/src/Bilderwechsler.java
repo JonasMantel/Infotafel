@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class Bilderwechsler {
+public class Bilderwechsler{
 	
 	private ArrayList<String> meineBilder = new ArrayList<String>();
 	
@@ -59,12 +59,12 @@ public class Bilderwechsler {
 			}
 			try {
 				Thread.sleep(60000);
+				System.out.println("Jetzt habe ich gewechselt");
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 		
-		}
+		}//end while
 	}
 	
 		
@@ -176,6 +176,22 @@ public class Bilderwechsler {
 		}
 		
 	}
+	
+	
+	public boolean getWechseln() {
+		return wechseln;
+	}
+	
+	public String getBestimmtesBild(int i) {
+		return meineBilder.get(i);
+	}
+	
+	public int getAnzahlBilder() {
+		return anzahlBilder;
+	}
+	
+	
+	
 	
 	
 	
