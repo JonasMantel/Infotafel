@@ -16,17 +16,19 @@ public class BWThread extends Thread{
 			
 			String bildername = meinBilderwechsler.getBestimmtesBild(i);   
 			
+			
 			meinBilderwechsler.DateiSpeichern(bildername);
 			//In Datei speichern
 			//Warten 1 minute und
 			
 			i++;
+			
 			if(i >= meinBilderwechsler.getAnzahlBilder()) {
 				i = 0;
 			}
 			try {
 				Thread.sleep(60000);
-				System.out.println("Jetzt habe ich gewechselt");
+				
 			} catch (InterruptedException e) {
 				Thread.currentThread().interrupt();
 			}

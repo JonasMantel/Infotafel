@@ -19,19 +19,19 @@ public class View {
 	private JTextField NameBildTextfield;
 	private Bilderwechsler meinBilderwechsler;
 	
-	private JLabel Bild1Label = new JLabel("Bild1");
+	private JLabel Bild1Label = new JLabel(" ");
 	
 	private JButton LöschenButton1 = new JButton("Löschen");
 	
-	private JLabel Bild2Label = new JLabel("Bild2");
+	private JLabel Bild2Label = new JLabel(" ");
 	
 	private JButton LöschenButton2 = new JButton("Löschen");
 	
-	private JLabel Bild3Label = new JLabel("Bild3");
+	private JLabel Bild3Label = new JLabel(" ");
 	
 	private JButton LöschenButton3 = new JButton("Löschen");
 	
-	private JLabel Bild4Label = new JLabel("Bild4");
+	private JLabel Bild4Label = new JLabel(" ");
 	
 	private Thread meinThread;
 	
@@ -61,7 +61,7 @@ public class View {
 		
 		meinBilderwechsler = new Bilderwechsler("H:/Jonas/Unterricht/Systembetreuung/Java_Infotafel/info.html");
 		
-		meinBilderwechsler.BildernamenEinlesen();
+		
 		initialize();
 		int zahlBilder = meinBilderwechsler.getMeineBilderSize();
 		for(int i = 0; i < zahlBilder; i++) {
@@ -131,6 +131,19 @@ public class View {
 			public void actionPerformed(ActionEvent e) {
 				meinBilderwechsler.BildHinzufuegen(NameBildTextfield.getText());
 				NameBildTextfield.setText("");
+				int zahlBilder = meinBilderwechsler.getMeineBilderSize();
+				for(int i = 0; i < zahlBilder; i++) {
+					switch(i) {
+						case 0 : Bild1Label.setText(meinBilderwechsler.getbilderName(0));
+									break;
+						case 1: Bild2Label.setText(meinBilderwechsler.getbilderName(1));
+									break;
+									
+						case 2: Bild3Label.setText(meinBilderwechsler.getbilderName(2));
+									break;
+						case 3: Bild4Label.setText(meinBilderwechsler.getbilderName(3));
+					}
+				}
 			}
 		});
 		GroupLayout gl_BildHinzufügenPanel = new GroupLayout(BildHinzufügenPanel);
@@ -163,7 +176,7 @@ public class View {
 		LöschenButton4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				meinBilderwechsler.bildLoeschen(meinBilderwechsler.getbilderName(3));
-				initialize();
+				Bild4Label.setText(" ");
 			}
 		});
 		GroupLayout gl_BilderPanel = new GroupLayout(BilderPanel);
@@ -188,19 +201,22 @@ public class View {
 		LöschenButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				meinBilderwechsler.bildLoeschen(meinBilderwechsler.getbilderName(0));
-				initialize();
+				Bild1Label.setText(" ");
 			}
 		});
 		LöschenButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				meinBilderwechsler.bildLoeschen(meinBilderwechsler.getbilderName(1));
-				initialize();
+				
+				Bild2Label.setText(" ");
+									
 			}
 		});
 		LöschenButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				meinBilderwechsler.bildLoeschen(meinBilderwechsler.getbilderName(2));
-				initialize();
+				Bild3Label.setText(" ");
 			}
 		});
 		gl_BilderPanel.setVerticalGroup(

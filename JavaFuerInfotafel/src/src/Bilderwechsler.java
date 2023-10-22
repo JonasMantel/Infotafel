@@ -23,7 +23,8 @@ public class Bilderwechsler{
 	
 	private String bilderOrdnerPfad = "H:/Jonas/Unterricht/Systembetreuung/Java_Infotafel/";
 	
-	private Path bilderNamenPfad = Paths.get("C:/users/jonas/git/repository/JavaFuerInfotafel/Bildernamen.txt");
+	private Path bilderNamenPfad = Paths.get("H:/Jonas/Unterricht/Systembetreuung/Java_Infotafel/Bildernamen.txt");
+	//git repository: C:/users/jonas/git/repository/JavaFuerInfotafel/
 	
 	public Bilderwechsler(String speicherOrtInfoDatei) {
 		dateiname = speicherOrtInfoDatei;
@@ -113,6 +114,7 @@ public class Bilderwechsler{
 			List<String> bilderNamen = Files.readAllLines(bilderNamenPfad);
 			for(String name : bilderNamen) {
 				meineBilder.add(name);
+				System.out.println("Das ist der eingelesene name: " + name);
 			}
 			
 		} catch (IOException e) {
@@ -148,16 +150,26 @@ public class Bilderwechsler{
 		
 		//aus der .txt Datei löschen
 		try {
-			List<String> bilderNamen = Files.readAllLines(bilderNamenPfad);
-			for(String nameAktuellesBild : bilderNamen) {
-				if(nameAktuellesBild.equals(nameBild)) {
-					bilderNamen.remove(nameAktuellesBild);
+			List<String> bilderNamenLoeschen = Files.readAllLines(bilderNamenPfad);
+			
+			System.out.println("Größe der Liste mit den Bildernamen aus der txt. Datei: " + bilderNamenLoeschen.size());
+			for(int i = 0; i < bilderNamenLoeschen.size(); i++) {
+				if(bilderNamenLoeschen.get(i).equals(nameBild)) {
+					bilderNamenLoeschen.remove(nameBild);
 				}
 			}
-			String bild = bilderNamen.get(0);
+			
+			//for(String nameAktuellesBild : bilderNamenLoeschen) {
+			//	System.out.println("Das ist das Bild aus der Textdatei, das gerade bearbeitet wird: " + nameAktuellesBild);
+			//	if(nameAktuellesBild.equals(nameBild)) {
+			//		bilderNamenLoeschen.remove(nameAktuellesBild);
+			//	}
+			//}
+			
+			String bild = bilderNamenLoeschen.get(0);
 			Files.writeString(bilderNamenPfad, bild);
-			for(int i = 1; i < bilderNamen.size(); i++) {
-				String bildEinfuegen = "\r\n" +bilderNamen.get(i);
+			for(int i = 1; i < bilderNamenLoeschen.size(); i++) {
+				String bildEinfuegen = "\r\n" +bilderNamenLoeschen.get(i);
 				Files.writeString(bilderNamenPfad, bildEinfuegen, StandardOpenOption.APPEND);
 			}
 			
@@ -187,7 +199,7 @@ public class Bilderwechsler{
 	}
 	
 	public int getAnzahlBilder() {
-		return anzahlBilder;
+		return meineBilder.size();
 	}
 	
 	
